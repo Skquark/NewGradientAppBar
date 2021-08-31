@@ -591,9 +591,8 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
             color: appBarTheme.color ?? themeData.primaryColor,
             elevation:
                 widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
-            shape: widget.shape,
             child: Container(
-              decoration: BoxDecoration(gradient: widget.gradient),
+              decoration: BoxDecoration(gradient: widget.gradient,shape: widget.shape),
               child: Semantics(
                 explicitChildNodes: true,
                 child: appBar,
