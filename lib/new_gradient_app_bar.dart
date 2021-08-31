@@ -1091,8 +1091,7 @@ class SliverNewGradientAppBar extends StatefulWidget {
   /// behavior based on the value of this property.
   ///
   /// * App bar with [floating] set to false:
-  ///   {@animation 476 400 https://flutter.github.io/assets-for-api-docs/assets/
-    /app_bar.mp4}
+  ///   {@animation 476 400 https://flutter.github.io/assets-for-api-docs/assets/app_bar.mp4}
   /// * App bar with [floating] set to true:
   ///   {@animation 476 400 https://flutter.github.io/assets-for-api-docs/assets/material/app_bar_floating.mp4}
   ///
