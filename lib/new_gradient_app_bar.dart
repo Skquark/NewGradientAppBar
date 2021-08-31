@@ -182,6 +182,7 @@ class NewGradientAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.titleSpacing = NavigationToolbar.kMiddleSpacing,
     this.toolbarOpacity = 1.0,
     this.bottomOpacity = 1.0,
+    this.borderRadius = BorderRadius.zero
   })  : assert(elevation == null || elevation >= 0.0),
         preferredSize = Size.fromHeight(
             kToolbarHeight + (bottom?.preferredSize.height ?? 0.0)),
@@ -365,6 +366,8 @@ class NewGradientAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
+  final BorderRadius borderRadius;
+    
   bool? _getEffectiveCenterTitle(ThemeData themeData) {
     if (centerTitle != null) return centerTitle;
     assert(true);
@@ -592,7 +595,7 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
             elevation:
                 widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
             child: Container(
-              decoration: BoxDecoration(gradient: widget.gradient,shape: widget.shape),
+              decoration: BoxDecoration(gradient: widget.gradient,borderRadius: widget.borderRadius),
               child: Semantics(
                 explicitChildNodes: true,
                 child: appBar,
