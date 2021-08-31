@@ -591,7 +591,7 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: overlayStyle,
         child: Material(
-            color: appBarTheme.color ?? themeData.primaryColor,
+            color: appBarTheme.color.withOpacity(0) ?? themeData.primaryColor.withOpacity(0),
             elevation:
                 widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
             child: Container(
@@ -1091,7 +1091,8 @@ class SliverNewGradientAppBar extends StatefulWidget {
   /// behavior based on the value of this property.
   ///
   /// * App bar with [floating] set to false:
-  ///   {@animation 476 400 https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.mp4}
+  ///   {@animation 476 400 https://flutter.github.io/assets-for-api-docs/assets/
+    /app_bar.mp4}
   /// * App bar with [floating] set to true:
   ///   {@animation 476 400 https://flutter.github.io/assets-for-api-docs/assets/material/app_bar_floating.mp4}
   ///
