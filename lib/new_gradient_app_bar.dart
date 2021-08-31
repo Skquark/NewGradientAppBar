@@ -591,7 +591,7 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: overlayStyle,
         child: Material(
-            color: appBarTheme.color.withOpacity(0) ?? themeData.primaryColor.withOpacity(0),
+            color: Colors.transparent,
             elevation:
                 widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
             child: Container(
