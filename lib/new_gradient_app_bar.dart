@@ -339,7 +339,7 @@ class NewGradientAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// [title] to take all the space available, set this value to 0.0.
   ///
   /// Defaults to [NavigationToolbar.kMiddleSpacing].
-  final double titleSpacing;
+  final double? titleSpacing;
 
   /// How opaque the toolbar part of the app bar is.
   ///
@@ -407,11 +407,11 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
     assert(debugCheckHasMaterialLocalizations(context));
     final ThemeData themeData = Theme.of(context);
     final AppBarTheme appBarTheme = AppBarTheme.of(context);
-    final ScaffoldState scaffold = Scaffold.of(context);
+    final ScaffoldState? scaffold = Scaffold.of(context);
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
 
-    final bool hasDrawer = scaffold.hasDrawer;
-    final bool hasEndDrawer = scaffold.hasEndDrawer;
+    final bool hasDrawer = scaffold?.hasDrawer ?? false;
+    final bool hasEndDrawer = scaffold?.hasEndDrawer ?? false;
     final bool canPop = parentRoute?.canPop ?? false;
     final bool useCloseButton =
         parentRoute is PageRoute<dynamic> && parentRoute.fullscreenDialog;
@@ -500,6 +500,7 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
     } else if (hasEndDrawer) {
       actions = IconButton(
         icon: const Icon(Icons.menu),
+        iconSize: overallIconTheme.size ?? 24,
         onPressed: _handleDrawerButtonEnd,
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       );
@@ -518,7 +519,7 @@ class _NewGradientAppBarState extends State<NewGradientAppBar> {
       middle: title,
       trailing: actions,
       centerMiddle: (widget._getEffectiveCenterTitle(themeData))!,
-      middleSpacing: widget.titleSpacing,
+      middleSpacing: widget.titleSpacing ?? appBarTheme.titleSpacing ?? NavigationToolbar.kMiddleSpacing,
     );
 
     // If the toolbar is allocated less than kToolbarHeight make it
@@ -682,30 +683,30 @@ class _SliverGradientAppBarDelegate extends SliverPersistentHeaderDelegate {
     required this.snapConfiguration,
     required this.shape,
   })   : assert(primary || topPadding == 0.0),
-        _bottomHeight = bottom.preferredSize.height;
+        _bottomHeight = bottom?.preferredSize.height ?? 0.0;
 
-  final Widget leading;
+  final Widget? leading;
   final bool automaticallyImplyLeading;
-  final Widget title;
-  final List<Widget> actions;
+  final Widget? title;
+  final List<Widget>? actions;
   final Widget? flexibleSpace;
-  final PreferredSizeWidget bottom;
-  final double elevation;
+  final PreferredSizeWidget? bottom;
+  final double? elevation;
   final bool forceElevated;
-  final Gradient gradient;
-  final Brightness brightness;
-  final IconThemeData iconTheme;
-  final IconThemeData actionsIconTheme;
-  final TextTheme textTheme;
+  final Gradient? gradient;
+  final Brightness? brightness;
+  final IconThemeData? iconTheme;
+  final IconThemeData? actionsIconTheme;
+  final TextTheme? textTheme;
   final bool primary;
-  final bool centerTitle;
-  final double titleSpacing;
-  final double expandedHeight;
+  final bool? centerTitle;
+  final double? titleSpacing;
+  final double? expandedHeight;
   final double collapsedHeight;
   final double topPadding;
   final bool floating;
   final bool pinned;
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   final double _bottomHeight;
 
@@ -713,10 +714,10 @@ class _SliverGradientAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => collapsedHeight;
 
   @override
-  double get maxExtent => math.max(topPadding + expandedHeight, minExtent);
+  double get maxExtent => math.max(topPadding + (expandedHeight ?? (kToolbarHeight) + _bottomHeight), minExtent);
 
   @override
-  final FloatingHeaderSnapConfiguration snapConfiguration;
+  final FloatingHeaderSnapConfiguration? snapConfiguration;
 
   @override
   Widget build(
@@ -1196,7 +1197,7 @@ class _SliverNewGradientAppBarState extends State<SliverNewGradientAppBar>
     final double topPadding =
         widget.primary ? MediaQuery.of(context).padding.top : 0.0;
     final double collapsedHeight = ((widget.pinned && widget.floating)
-        ? widget.bottom!.preferredSize.height + topPadding
+        ? (widget.bottom?.preferredSize.height ?? 0.0 + topPadding)
         : 0.0)!;
 
     return MediaQuery.removePadding(
