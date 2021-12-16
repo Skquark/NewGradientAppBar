@@ -688,7 +688,7 @@ class _SliverGradientAppBarDelegate extends SliverPersistentHeaderDelegate {
   final bool automaticallyImplyLeading;
   final Widget title;
   final List<Widget> actions;
-  final Widget flexibleSpace;
+  final Widget? flexibleSpace;
   final PreferredSizeWidget bottom;
   final double elevation;
   final bool forceElevated;
