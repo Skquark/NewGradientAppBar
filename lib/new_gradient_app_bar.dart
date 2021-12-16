@@ -1196,7 +1196,7 @@ class _SliverNewGradientAppBarState extends State<SliverNewGradientAppBar>
     assert(!widget.primary || debugCheckHasMediaQuery(context));
     final double topPadding =
         widget.primary ? MediaQuery.of(context).padding.top : 0.0;
-    final double collapsedHeight = ((widget.pinned && widget.floating)
+    final double collapsedHeight = ((widget.pinned && widget.floating && widget.bottom != null)
         ? (widget.bottom?.preferredSize.height ?? 0.0 + topPadding)
         : 0.0)!;
 
@@ -1207,29 +1207,29 @@ class _SliverNewGradientAppBarState extends State<SliverNewGradientAppBar>
         floating: widget.floating,
         pinned: widget.pinned,
         delegate: _SliverGradientAppBarDelegate(
-          leading: (widget.leading)!,
+          leading: widget.leading,
           automaticallyImplyLeading: widget.automaticallyImplyLeading,
-          title: widget.title!,
-          actions: widget.actions!,
-          flexibleSpace: widget.flexibleSpace!,
-          bottom: widget.bottom!,
-          elevation: widget.elevation!,
+          title: widget.title,
+          actions: widget.actions,
+          flexibleSpace: widget.flexibleSpace,
+          bottom: widget.bottom,
+          elevation: widget.elevation,
           forceElevated: widget.forceElevated,
-          gradient: widget.gradient!,
-          brightness: widget.brightness!,
-          iconTheme: widget.iconTheme!,
-          actionsIconTheme: widget.actionsIconTheme!,
-          textTheme: widget.textTheme!,
+          gradient: widget.gradient,
+          brightness: widget.brightness,
+          iconTheme: widget.iconTheme,
+          actionsIconTheme: widget.actionsIconTheme,
+          textTheme: widget.textTheme,
           primary: widget.primary,
-          centerTitle: widget.centerTitle!,
+          centerTitle: widget.centerTitle,
           titleSpacing: widget.titleSpacing,
-          expandedHeight: widget.expandedHeight!,
+          expandedHeight: widget.expandedHeight,
           collapsedHeight: collapsedHeight,
           topPadding: topPadding,
           floating: widget.floating,
           pinned: widget.pinned,
-          shape: widget.shape!,
-          snapConfiguration: (_snapConfiguration)!,
+          shape: widget.shape,
+          snapConfiguration: _snapConfiguration,
         ),
       ),
     );
