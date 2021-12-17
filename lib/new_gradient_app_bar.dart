@@ -1195,9 +1195,9 @@ class _SliverNewGradientAppBarState extends State<SliverNewGradientAppBar>
     assert(!widget.primary || debugCheckHasMediaQuery(context));
     final double topPadding =
         widget.primary ? MediaQuery.of(context).padding.top : 0.0;
-    final double collapsedHeight = ((widget.pinned && widget.floating && widget.bottom != null)
-        ? (widget.bottom?.preferredSize.height ?? 0.0 + topPadding)
-        : 0.0)!;
+    final double collapsedHeight = (widget.pinned && widget.floating && widget.bottom != null)
+        ? ((widget.bottom?.preferredSize.height ?? 0.0) + topPadding)
+        : 0.0;
 
     return MediaQuery.removePadding(
       context: context,
