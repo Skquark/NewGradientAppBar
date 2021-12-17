@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 const double _kLeadingWidth =
     kToolbarHeight; // So the leading button is square.
@@ -714,7 +713,7 @@ class _SliverGradientAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => collapsedHeight;
 
   @override
-  double get maxExtent => math.max(topPadding + (expandedHeight ?? (kToolbarHeight) + _bottomHeight), minExtent);
+  double get maxExtent => math.max(topPadding + (expandedHeight ?? kToolbarHeight)), minExtent);
 
   @override
   final FloatingHeaderSnapConfiguration? snapConfiguration;
