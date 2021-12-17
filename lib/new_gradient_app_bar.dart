@@ -713,7 +713,7 @@ class _SliverGradientAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => collapsedHeight;
 
   @override
-  double get maxExtent => math.max(topPadding + (expandedHeight ?? kToolbarHeight)), minExtent);
+  double get maxExtent => math.max(topPadding + (expandedHeight ?? kToolbarHeight), minExtent);
 
   @override
   final FloatingHeaderSnapConfiguration? snapConfiguration;
