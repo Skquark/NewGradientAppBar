@@ -713,7 +713,7 @@ class _SliverGradientAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => collapsedHeight;
 
   @override
-  double get maxExtent => math.max(topPadding + (expandedHeight ?? kToolbarHeight), minExtent);
+  double get maxExtent => math.max(topPadding + (expandedHeight ?? kToolbarHeight + _bottomHeight), minExtent);
 
   @override
   final FloatingHeaderSnapConfiguration? snapConfiguration;
@@ -1197,7 +1197,7 @@ class _SliverNewGradientAppBarState extends State<SliverNewGradientAppBar>
         widget.primary ? MediaQuery.of(context).padding.top : 0.0;
     final double collapsedHeight = (widget.pinned && widget.floating && widget.bottom != null)
         ? ((widget.bottom?.preferredSize.height ?? 0.0) + topPadding)
-        : 0.0;
+        : topPadding;
 
     return MediaQuery.removePadding(
       context: context,
